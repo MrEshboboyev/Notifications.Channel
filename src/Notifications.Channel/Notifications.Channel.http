@@ -1,0 +1,5 @@
+@Notifications.Channel_HostAddress = http://localhost:5104
+
+POST {{Notifications.Channel_HostAddress}}/orders
+
+###
