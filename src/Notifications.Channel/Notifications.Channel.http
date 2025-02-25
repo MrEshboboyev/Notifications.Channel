@@ -3,3 +3,5 @@
 POST {{Notifications.Channel_HostAddress}}/orders
 
 ###
+
+POST https://localhost:5000/orders

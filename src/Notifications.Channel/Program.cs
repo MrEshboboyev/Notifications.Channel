@@ -12,7 +12,7 @@ builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssemblyContaining<Program>();
 
-    cfg.NotificationPublisherType = typeof(ForeachAwaitPublisher);
+    cfg.NotificationPublisherType = typeof(ChannelPublisher);
 });
 
 // configure OpenTelemetry
@@ -24,6 +24,9 @@ builder.Services
             .AddAspNetCoreInstrumentation()
             .AddSource(DiagnosticConfig.Source.Name))
     .UseOtlpExporter();
+
+builder.Services.AddScoped<NotificationsQueue>();   
+builder.Services.AddHostedService<ChannelNotificationProcessor>();
 
 var app = builder.Build();
 
